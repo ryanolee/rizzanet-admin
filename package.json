@@ -4,23 +4,34 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-html-attrs": "^2.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "dotenv-webpack": "^1.5.5",
     "env-cmd": "^8.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-scripts": "1.1.1",
     "redux": "^4.0.0",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack": "^4.8.1",
+    "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build_rizzanet": "env-cmd ./.env.rizzanet react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --content-base --inline --hot --mode development",
+    "build_rizzanet": "env-cmd ./.env.rizzanet webpack --config ./webpack.config.js --env.dotenv ./.env.rizzanet --progress --verbose --mode development"
   },
   "devDependencies": {
-    "react-logger": "^1.1.0"
+    "react-logger": "^1.1.0",
+    "webpack-cli": "^2.1.3"
   }
 }

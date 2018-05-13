@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import ContentNavigatorItem from './componants/ContentNavigator.js';
+import ContentNavigator from './componants/ContentNavigator.js';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <div>
-        <ContentNavigatorItem nodeID='1' label='root'/>
+        <ContentNavigator/>
       </div>
     );
   }

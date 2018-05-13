@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 
-
-class ContentNavigatorItem extends Component {
+@connect((store) => {
+    return {
+        content: store.content
+    };
+})
+class ContentNavigator extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            error: null,
-            isLoading: false,
-            children: []
-        }
     }
+
     handleClick(evt){
-        console.log(process.env);
-        const node_id = this.props.nodeID;
-        this.setState({isLoading: true});
-        fetch(process.env.REACT_APP_API_URL+'/get/id/children/'+node_id+'?api_key='+process.env.REACT_APP_API_KEY)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-                isLoading: false,
-                children: result.result
-            });
-            console.log(result)
-          },
-          (error) => {
-           console.log(error)
-          }
-        )
     }
 
     render() {
-        
+        return <div>{JSON.stringify(this.props.content)}</div>;
+        /*
         if (this.state.isLoading){
             return <div>Loading...</div>
         }
@@ -54,8 +40,8 @@ class ContentNavigatorItem extends Component {
                     </ul>
                 </div>
             );
-        }
+        }*/
     }
 }
 
-export default ContentNavigatorItem;
+export default ContentNavigator;
