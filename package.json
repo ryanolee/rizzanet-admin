@@ -27,7 +27,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --content-base --inline --hot --mode development",
+    "start": "env-cmd ./.env.rizzanet webpack-dev-server --content-base --inline --hot --mode development",
     "build_rizzanet": "env-cmd ./.env.rizzanet webpack --config ./webpack.config.js --env.dotenv ./.env.rizzanet --progress --verbose --mode development"
   },
   "devDependencies": {

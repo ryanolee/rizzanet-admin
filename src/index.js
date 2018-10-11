@@ -6,5 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import {getChildrenByID} from './actions/content';
 window.getChildrenByID = getChildrenByID;
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+, document.getElementById('root'));
 registerServiceWorker();
