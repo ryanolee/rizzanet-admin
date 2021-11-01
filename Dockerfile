@@ -1,11 +1,21 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
-COPY . /app/
-WORKDIR /app/
+ENV NODE_VERSION 8.15
 
 # Build rizzanet admin app
-RUN curl -sL  https://deb.nodesource.com/setup_9.x | bash - && apt-get install -y nodejs && curl -o- -L https://yarnpkg.com/install.sh | bash 
-RUN $HOME/.yarn/bin/yarn install --pure-lockfile && $HOME/.yarn/bin/yarn build_rizzanet && $HOME/.yarn/bin/yarn global bin
+RUN apk --no-cache add curl bash
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/v3.8/main/ nodejs=8.14.0-r0 npm 
+
+# Dupe files
+COPY ./package-lock.json /app/package-lock.json 
+WORKDIR /app/
+RUN npm install
+
+COPY . /app/
+
+
+# Install dir
+#RUN npm run build_rizzanet
 
 VOLUME /app/
 
